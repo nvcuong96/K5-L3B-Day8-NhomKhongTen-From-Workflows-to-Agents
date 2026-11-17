@@ -5,7 +5,7 @@
 - Tên nhóm:
 - Lớp: L3A
 - Repo nhóm: `K5-L3A-DAY08-TenNhom-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt:
+- URL repo, nhánh nộp, commit chốt: 55e92d0
 
 ## Thành viên
 
@@ -30,7 +30,7 @@ Gợi ý chia vai:
 | Nguyễn Văn Hiếu | Single ReAct agent | 451c154 | tests/test_single_agent.py |
 | Võ Hồng Lương | Orchestrator + handoff | c394196, 30007b2 | tests/test_orchestrator_handoff.py |
 | Nguyễn Đức Mạnh | Workflow | 17315ef | tests/test_workflow_cp4.py |
-| Nguyễn Văn Cường | Ledger + evaluation, CP5 và bonus B1 | CP5 working tree | src/tests/test_bonus_orchestrator_parallel.py |
+| Nguyễn Văn Cường | Ledger + evaluation, CP5 và bonus B1 | 55e92d0 | src/tests/test_bonus_orchestrator_parallel.py |
 
 ## Cá nhân
 

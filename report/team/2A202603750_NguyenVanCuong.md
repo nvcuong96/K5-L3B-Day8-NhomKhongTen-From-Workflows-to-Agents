@@ -39,8 +39,7 @@
   sequential 26/26 ms và parallel 14/14 ms (mean/p95).
 - `python -m pytest -q tests/test_bonus_orchestrator_parallel.py`: **2 passed**.
 - `python -m pytest -q`: **173 passed, 248 deselected**.
-- `python -m lab8.check_submission`: **0 FAIL, 1 WARN**; cảnh báo là các thay
-  đổi CP5 chưa commit.
+- `55e92d0`: commit CP5 chứa code bonus, benchmark, báo cáo và test B1.
 
 ## 5. Hạn chế và tự đánh giá
 

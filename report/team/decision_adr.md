@@ -4,7 +4,7 @@
 `Shape chọn` phải là đúng một trong: `workflow`, `single`, `orchestrator`, `swarm`. Đây là shape được chấm cổng hidden.
 
 - Shape chọn: workflow
-- Commit hash: 7da3bf1 (CP5 working tree)
+- Commit hash: 55e92d0
 - Run id dẫn chứng: cp5-public-20261117
 - Pass rate / pass^5 / seed min-max / variance: 1.000 / 1.000 / 1.000-1.000 / 0.000000
 - Cost per success (mô phỏng, VND): 27.86

@@ -6,7 +6,7 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
 
 - Tên nhóm: Nhom Khong Ten
 - Thành viên: xem `TEAM.md`
-- Commit chốt (trùng `report/team/decision_adr.md`): 7da3bf1 (CP5 working tree)
+- Commit chốt (trùng `report/team/decision_adr.md`): 55e92d0
 
 ## 2. Mục tiêu và cách tiếp cận
 
