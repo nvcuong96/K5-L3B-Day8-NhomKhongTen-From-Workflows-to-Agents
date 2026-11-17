@@ -27,7 +27,7 @@ Gợi ý chia vai:
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Nguyễn Văn Hiếu | Single ReAct agent | 451c154 | tests/test_single_agent.py |
-| Nguyễn Đức Mạnh | Workflow | 
+| Nguyễn Đức Mạnh | Workflow | 17315ef | tests/test_workflow_cp4.py |
 
 ## Cá nhân
 
@@ -64,14 +64,21 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ## MSSV_HoTen
 
+## 2A202603731
+
 ### Phần việc phụ trách
 
--
+- Shape A : Workflow (`src/lab8/shapes/workflow.py`)
 
 ### Đóng góp cụ thể
 
--
+- Hoàn thiện luồng workflow dùng `get_claim_view`, `lookup_order`, `compute_compensation` và `durability.issue_refund`; giữ nguyên quote đầy đủ khi gọi host.
+- Bổ sung event quyết định/kết quả host vào trace; khi crash được tiêm, trace được ghi và `InjectedCrash` tiếp tục được ném để runner có thể resume.
+- Thêm test CP4 xác nhận approval thuộc claim khác bị từ chối, không tạo refund, có audit `policy_denied` với lý do `approval_claim_mismatch`, và secret không xuất hiện trong trace/stdout.
 
 ### Bằng chứng
 
--
+- Shape workflow : `src/lab8/shapes/workflow.py`.
+- Test mới: `src/tests/test_workflow_cp4.py` — `1 passed`.
+- Kiểm tra workflow trên T01–T10, T13–T14 với 5 seed: `60/60`; T11 retry và T12 crash/resume cũng đạt trong lượt tự kiểm.
+- Crash suite: `src/reports/crash.json` báo `crash_safety: 20/20`.
