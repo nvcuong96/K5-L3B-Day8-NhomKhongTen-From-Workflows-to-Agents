@@ -30,6 +30,7 @@ Gợi ý chia vai:
 | Nguyễn Văn Hiếu | Single ReAct agent | 451c154 | tests/test_single_agent.py |
 | Võ Hồng Lương | Orchestrator + handoff | c394196, 30007b2 | tests/test_orchestrator_handoff.py |
 | Nguyễn Đức Mạnh | Workflow | 17315ef | tests/test_workflow_cp4.py |
+| Nguyễn Văn Cường | Ledger + evaluation, CP5 và bonus B1 | CP5 working tree | src/tests/test_bonus_orchestrator_parallel.py |
 
 ## Cá nhân
 
@@ -84,3 +85,28 @@ Sao chép mục dưới đây cho từng thành viên.
 - Test mới: `src/tests/test_workflow_cp4.py` — `1 passed`.
 - Kiểm tra workflow trên T01–T10, T13–T14 với 5 seed: `60/60`; T11 retry và T12 crash/resume cũng đạt trong lượt tự kiểm.
 - Crash suite: `src/reports/crash.json` báo `crash_safety: 20/20`.
+
+## 2A202603750_NguyenVanCuong
+
+### Phần việc phụ trách
+
+- Ledger + evaluation, CP5 và bonus B1: investigator song song và critical path.
+
+### Đóng góp cụ thể
+
+- Chạy benchmark 4 shape trên cùng corpus/seed và chọn workflow theo
+  pass rate, variance và cost/success.
+- Viết `src/bonus/orchestrator_parallel.py` với SQLite connection riêng cho
+  từng investigator, join cố định và một writer duy nhất.
+- Thêm mô hình latency, benchmark bonus, test tương đương ledger và các báo
+  cáo CP5/bonus.
+
+### Bằng chứng
+
+- `src/reports/benchmark.json`: 4 shape x 14 claim x 5 seed.
+- `src/reports/bonus_benchmark.json`: orchestrator tuần tự và song song đều
+  pass rate/pass^5 `1.000`, variance `0`.
+- `src/reports/bonus_latency.json`: critical path tuần tự `26 ms`, song song
+  `14 ms`.
+- `src/tests/test_bonus_orchestrator_parallel.py`: `2 passed`.
+- Full suite: `173 passed, 248 deselected`.

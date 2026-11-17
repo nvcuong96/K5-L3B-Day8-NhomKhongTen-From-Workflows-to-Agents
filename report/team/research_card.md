@@ -17,19 +17,19 @@ Phần này nối tiếp phần mini research ở buổi lý thuyết (slide 62�
 
 | Field | Hướng dẫn | Nhóm điền |
 | --- | --- | --- |
-| CÂU | R1 / R2 / R3 / R4 | |
-| SOURCE | Paper/blog, năm, URL, loại bằng chứng (benchmark, production report, blog kinh nghiệm) | |
-| CLAIM | Một kết luận gốc của nguồn. Không viết rộng hơn phạm vi paper | |
-| BOUNDARY | Model / dataset / setup giới hạn kết luận đó | |
-| HYPOTHESIS | Nếu đổi shape A→B (hoặc bật/tắt một thành phần), metric X sẽ đổi theo hướng nào, khoảng bao nhiêu | |
-| METHOD | Biến giữ cố định: model, tools, seed, corpus, giá, evaluator. Biến duy nhất được thay đổi: … | |
-| FAILURE / METRIC | Một lỗi dự kiến và cách đo nó: pass rate, pass^5, variance, cost/success, leak, bypass | |
+| CÂU | R1 / R2 / R3 / R4 | R1 · Scaling |
+| SOURCE | Paper/blog, năm, URL, loại bằng chứng (benchmark, production report, blog kinh nghiệm) | Google Research, 2026, `2512.08296v3.pdf`, benchmark 260 cấu hình trên 6 benchmark |
+| CLAIM | Một kết luận gốc của nguồn. Không viết rộng hơn phạm vi paper | Coordination có diminishing returns khi baseline single-agent đã mạnh; task tuần tự có thể giảm khi thêm multi-agent. |
+| BOUNDARY | Model / dataset / setup giới hạn kết luận đó | Kết quả của paper dùng các benchmark/LLM/kiến trúc được nghiên cứu; không tự động suy ra cho LogiX, MockLLM hoặc mọi task. |
+| HYPOTHESIS | Nếu đổi shape A→B (hoặc bật/tắt một thành phần), metric X sẽ đổi theo hướng nào, khoảng bao nhiêu | Bật investigator song song giữ nguyên pass rate/ledger nhưng giảm critical path khoảng 40–50%; cost/success có thể tăng do thêm tool calls. |
+| METHOD | Biến giữ cố định: model, tools, seed, corpus, giá, evaluator. Biến duy nhất được thay đổi: … | Giữ MockLLM, tools, seeds 11/22/33/44/55, 14 public claims, pricing và evaluator; chỉ đổi lịch chạy investigator tuần tự → song song. |
+| FAILURE / METRIC | Một lỗi dự kiến và cách đo nó: pass rate, pass^5, variance, cost/success, leak, bypass | Lỗi dự kiến là thread-order làm khác quote/ledger hoặc chi phí tăng; đo pass rate, pass^5, variance, cost/success, critical-path mean/p95 và safety counts. |
 
 ## Kết quả ablation
 
-- Lệnh đã chạy (copy nguyên văn):
-- Run id / file report:
-- Kết quả so với hypothesis (đúng / sai / không kết luận được), kèm số liệu:
+- Lệnh đã chạy (copy nguyên văn): `python -m lab8.benchmark --shapes orchestrator,orchestrator_parallel --extra-shape orchestrator_parallel=bonus.orchestrator_parallel:run_claim --cases data/public_claims.jsonl --seeds 11,22,33,44,55 --out reports/bonus_benchmark.json` và `python -m bonus.latency_report`
+- Run id / file report: `cp5-b1-20261117` / `src/reports/bonus_benchmark.json`, `src/reports/bonus_latency.json`
+- Kết quả so với hypothesis (đúng / sai / không kết luận được), kèm số liệu: Đúng một phần. Cả hai đạt pass rate/pass^5 1.000, variance 0, mean/p95 steps 4.36/5. Parallel có critical path 14/14 ms so với tuần tự 26/26 ms, nhưng cost/success tăng 55.71 → 74.29 VND vì tool calls trung bình 5.57 → 7.43. Chưa kết luận được latency production vì latency mô phỏng.
 - Giới hạn: MockLLM không phải model sản xuất, latency là `unavailable`.
 
 Muốn đi xa hơn một ablation để lấy điểm cộng thì xem [docs/bonus_topics.md](../../docs/bonus_topics.md).
