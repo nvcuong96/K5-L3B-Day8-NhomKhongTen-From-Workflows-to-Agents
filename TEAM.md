@@ -13,6 +13,7 @@
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 |        |      |       |        |         |
 |   2 | Nguyễn Văn Hiếu | 2A202603746 | 26ai.hieunv3@vinuni.edu.vn | lunaHieu | Single ReAct agent |
+|   3 | Nguyễn Đức Mạnh | 2A202603731 | 26ai.
 
 Gợi ý chia vai:
 
@@ -26,6 +27,7 @@ Gợi ý chia vai:
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Nguyễn Văn Hiếu | Single ReAct agent | 451c154 | tests/test_single_agent.py |
+| Nguyễn Đức Mạnh | Workflow | 
 
 ## Cá nhân
 
